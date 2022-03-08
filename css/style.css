@@ -1,0 +1,82 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  width: inherit;
+  height: inherit;
+  max-width: 650px;
+  min-width: 300px;
+  margin: auto;
+}
+
+section {
+  margin: auto;
+}
+
+/* override nes.css ------- */
+.nes-checkbox {
+  margin-left: 10px;
+}
+.nes-btn {
+  margin-top: 20px;
+}
+/* ------------------------ */
+
+.font-small {
+  font-size: 0.8rem;
+}
+
+.not-centered {
+  text-align: justify;
+}
+
+.field-mg-btm {
+  margin: 0 0 40px 0;
+}
+
+.cat-message-container {
+  display: flex;
+  width: 100%;
+  height: 132px;
+}
+
+.cat-message-container > i.nes-octocat {
+  align-self: flex-end;
+  width: 121px;
+}
+.cat-message-container > div.nes-balloon {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.nes-balloon p {
+  font-size: 12px;
+}
+
+.shaking {
+  animation: shake 0.2s linear backwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0px, -10px);
+  }
+  20% {
+    transform: translate(0px, 10px);
+  }
+  40% {
+    transform: translate(0px, -10px);
+  }
+  60% {
+    transform: translate(0px, 10px);
+  }
+  80% {
+    transform: translate(0px, -10px);
+  }
+  100% {
+    transform: translate(0px, 10px);
+  }
+}

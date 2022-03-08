@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script defer type="module" src="js/script.js"></script>
+    <title>Hello NES | Sign up</title>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="cat-message-container">
+                <i class="nes-octocat animate"></i>
+                <div class="nes-balloon from-left">
+                    <p>Create an account!</p>
+                </div>
+            </div>
+            <form action="result.html" accept-charset="utf-8" id="signup_form" method="GET" class="nes-container with-title is-centered">
+                <p class="title">Form</p>
+                
+                <div class="nes-field field-mg-btm not-centered"> <!-- Email -->
+                    <label for="email_field">Email</label>
+                    <input type="text" id="email_field" name="email" class="nes-input" spellcheck="false" placeholder="abc123@example.com">
+                </div>
+                <div class="nes-field field-mg-btm not-centered"> <!-- Username -->
+                    <label for="name_field">Username</label>
+                    <input type="text" id="name_field" name="username" class="nes-input" spellcheck="false">
+                </div>
+                <div class="nes-field field-mg-btm not-centered"> <!-- Password -->
+                    <label for="pw_field">Password</label>
+                    <input type="password" id="pw_field" name="password" class="nes-input" spellcheck="false">
+                </div>
+                <div class="nes-field field-mg-btm not-centered"> <!-- Confirm Password -->
+                    <label for="cfpw_field">Confirm Password</label>
+                    <input type="password" id="cfpw_field" class="nes-input" spellcheck="false">
+                </div>
+                <label> <!-- CHECKBOX -->
+                    <input type="checkbox" id="acception_field" name="acception" class="nes-checkbox" />
+                    <span class="font-small">I accept the Terms of Use & Privacy Policy.</span>
+                </label>
+                <!-- Submit -->
+                <button type="submit" class="nes-btn is-primary">Submit</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
