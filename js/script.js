@@ -17,7 +17,7 @@ const typeOnBalloon = () => {
   }
 };
 
-const startTyping = (text) => {
+const startTyping = (text, shakeAnimation=false) => {
   // init
   document.querySelector('.shaking')?.classList.remove('shaking');
   clearInterval(typeInterval);
@@ -25,52 +25,59 @@ const startTyping = (text) => {
   textCopied = text;
   strIdx = 0;
 
-  document.querySelector('#signup_form').classList.add('shaking');
+  shakeAnimation && document.querySelector('#signup_form').classList.add('shaking');
   typeInterval = setInterval(typeOnBalloon, 50);
 };
 
 const validateForm = (e) => {
   const $frm = document.querySelector('#signup_form');
+  $frm.querySelectorAll('.is-error').forEach(($input) => {
+    $input.classList.remove('is-error');
+  });
 
   // email
-  const email = $frm.querySelector('#email_field').value;
-  const emailChecked = checkEmail(email);
+  const $inputEmail = $frm.querySelector('#email_field');
+  const emailChecked = checkEmail($inputEmail.value);
   if (!emailChecked.result) {
-    startTyping(emailChecked.error);
+    $inputEmail.classList.add('is-error');
+    startTyping(emailChecked.error, true);
     e.preventDefault();
     return false;
   }
 
   // username
-  const username = $frm.querySelector('#name_field').value;
-  const usernameChecked = checkUsername(username);
+  const $inputUsername = $frm.querySelector('#name_field');
+  const usernameChecked = checkUsername($inputUsername.value);
   if (!usernameChecked.result) {
-    startTyping(usernameChecked.error);
+    $inputUsername.classList.add('is-error');
+    startTyping(usernameChecked.error, true);
     e.preventDefault();
     return false;
   }
 
   // password
-  const password = $frm.querySelector('#pw_field').value;
-  const passwordChecked = checkPassword(password);
+  const $inputPassword = $frm.querySelector('#pw_field');
+  const passwordChecked = checkPassword($inputPassword.value);
   if (!passwordChecked.result) {
-    startTyping(passwordChecked.error);
+    $inputPassword.classList.add('is-error');
+    startTyping(passwordChecked.error, true);
     e.preventDefault();
     return false;
   }
 
   // check password
-  const isPasswordCorrect = (password === $frm.querySelector('#cfpw_field').value);
-  if (!isPasswordCorrect) {
-    startTyping('Please, make sure your passwords match.');
+  const $inputPasswordMatch = $frm.querySelector('#cfpw_field');
+  if ( !($inputPassword.value === $inputPasswordMatch.value) ) {
+    $inputPasswordMatch.classList.add('is-error');
+    startTyping('Please, make sure your passwords match.', true);
     e.preventDefault();
     return false;
   }
 
-  // check acception
-  const isCheckedAcception = $frm.querySelector('#acception_field').checked;
-  if (!isCheckedAcception) {
-    startTyping('You must read and accept the Terms of Use & Privacy Policy...');
+  // check acceptance
+  const $inputAcceptance = $frm.querySelector('#acceptance_field');
+  if (!$inputAcceptance.checked) {
+    startTyping('You must read and accept the Terms of Use & Privacy Policy...', true);
     e.preventDefault();
     return false;
   }
@@ -83,10 +90,8 @@ document.querySelector('#signup_form').addEventListener('animationend', (e) => {
   e.target.classList.remove('shaking');
 });
 
-// add submit eventlistener
+// add submit eventlistener on submit button
 const $frm = document.querySelector('#signup_form');
 $frm.addEventListener('submit', validateForm);
 
 startTyping('Create an account!');
-
-
